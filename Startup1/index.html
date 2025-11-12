@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Light theme sticky header and footer template" />
+  <title>Light Theme Sticky Layout</title>
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="container">
+    <header role="banner">
+      <div class="header-inner">Sticky Header</div>
+    </header>
+
+    <main id="main" role="main" class="content">
+      <h1>Welcome!</h1>
+      <p>
+        This is a light-themed, mobile-friendly page with a sticky header and footer.
+        Only borders are black, and everything else stays clean and minimal.
+      </p>
+
+      <section class="login" aria-labelledby="login-title">
+        <h2 id="login-title">Login</h2>
+        <form action="dash.html" method="get" class="login-form" novalidate>
+          <label for="username" class="visually-hidden">Username</label>
+          <input type="text" id="username" name="username" placeholder="Username" required />
+
+          <label for="password" class="visually-hidden">Password</label>
+          <input type="password" id="password" name="password" placeholder="Password" required />
+
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+      </section>
+
+      <p class="small muted" style="margin-top: 600px;">Credits :- Samir and it's team.</p>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="footer-inner">© 2025 Abhinav Aryan — All rights reserved</div>
+    </footer>
+  </div>
+</body>
+</html>

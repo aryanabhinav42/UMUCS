@@ -1,0 +1,229 @@
+:root{
+  --header-height: 56px;
+  --footer-height: 56px;
+  --border-color: #000;
+  --bg: #fff;
+  --text: #111;
+  --muted: #4a4a4a;
+  --card-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  --radius: 12px;
+  --max-width: 900px;
+  --gap: 1.25rem;
+  --accent: rgba(0,0,0,0.06);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+a { color: inherit; }
+
+/* Skip link for accessibility */
+.skip {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip:focus {
+  left: 12px;
+  top: 12px;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  z-index: 1200;
+}
+
+/* Layout container */
+.container { min-height: 100vh; display: flex; flex-direction: column; align-items: stretch; }
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  padding: 0 1rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  backdrop-filter: blur(4px);
+}
+.header-inner { max-width: var(--max-width); width: 100%; padding: 0 1rem; }
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--footer-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border-top: 1px solid var(--border-color);
+  z-index: 1000;
+  padding: 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.footer-inner { max-width: var(--max-width); width: 100%; padding: 0 1rem; text-align: center; }
+
+/* Main content spacing so header/footer don't overlap content */
+.content {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: calc(var(--header-height) + var(--gap)) auto calc(var(--footer-height) + var(--gap));
+  padding: calc(var(--gap) * 1.1);
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow .18s ease, transform .12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hover lift on larger screens */
+@media (hover: hover) and (min-width: 520px) {
+  .content:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
+}
+
+/* Headings & text */
+h1 { margin-top: 0; font-size: 1.6rem; letter-spacing: -0.2px; }
+h2 { margin: 0 0 0.5rem 0; font-size: 1.125rem; }
+p { color: var(--muted); line-height: 1.5; margin: 0 0 1rem 0; }
+
+/* Utility */
+.align-center { text-align: center; }
+.small { font-size: 0.9rem; color: var(--muted); }
+.muted { color: var(--muted); }
+
+/* Login card */
+.login { max-width: 720px; margin: 1rem auto 0; text-align: left; padding: 0; background: transparent; border: none; box-shadow: none; }
+.login h2 { text-align: center; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
+
+/* Form elements */
+.login-form { display: block; }
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"] {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  margin: 0.45rem 0 0.85rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  font-size: 1rem;
+  transition: box-shadow .12s ease, border-color .12s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input::placeholder { color: #9b9b9b; }
+
+/* Focus states */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(0,0,0,0.03);
+  border-color: var(--border-color);
+}
+
+/* Primary button (used on index) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .12s ease, background .12s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.06); background: rgba(0,0,0,0.03); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:focus { outline: none; box-shadow: 0 0 0 8px rgba(0,0,0,0.03); }
+
+/* Button grid inside login area */
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; align-items: stretch; }
+
+/* Ensure anchors don't inherit default link styles */
+.login a { text-decoration: none; display: block; }
+
+/* Button / card style for dashboard tiles */
+.centents {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 88px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .12s ease, background .12s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Hover / active / focus states */
+.centents:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  background: rgba(0,0,0,0.03);
+}
+.centents:active { transform: translateY(-1px); }
+.centents:focus, .centents:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(0,0,0,0.04);
+}
+
+/* Allow line breaks inside button labels to appear nicely */
+.centents br { display: block; line-height: 1; }
+
+/* Responsive: stack buttons on narrow screens */
+@media (max-width: 520px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .centents { min-height: 72px; }
+  .content { margin-left: 12px; margin-right: 12px; }
+}
+
+/* Small responsive tweaks */
+@media (min-width: 960px) {
+  header, footer { padding-left: 2rem; padding-right: 2rem; }
+  .content { padding-left: 2rem; padding-right: 2rem; }
+}
+
+/* Accessibility helpers */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
